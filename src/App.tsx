@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 원룸상세 from './screens/원룸상세';
+import 빌라상세 from './screens/빌라상세';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+
+const queryClient = new QueryClient({defaultOptions: {queries: {refetchOnWindowFocus: false}}})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <div className="App">
+          <원룸상세 id="27341659" />
+          <빌라상세 id="27270854" />
+        </div>
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
 
