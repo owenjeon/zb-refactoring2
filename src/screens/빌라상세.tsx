@@ -1,19 +1,13 @@
-import React, { useEffect } from "react"
-import { useSetRecoilState } from "recoil"
-import 원오빌상세item from "../components/원오빌/원오빌상세item"
-import 원오빌상세subway from "../components/원오빌/원오빌상세subway"
-import { 원오빌ItemIdState } from "../recoil/원오빌item"
+import React from "react"
+import { useHistory } from "react-router"
+import 원오빌상세item from "../components/원오빌/ItemInfo"
+import 원오빌상세subway from "../components/원오빌/Subway"
 
-interface Props {
-  id: string
-}
-
-export default function 빌라상세({id}: Props) {
-  const setItemId = useSetRecoilState(원오빌ItemIdState)
-  useEffect(() => {
-    setItemId(id)
-  }, [])
+export default function 빌라상세() {
+  const history = useHistory()
   return <div style={{backgroundColor: "skyblue"}}>
+    <h2>빌라 상세 <button onClick={history.goBack}>뒤로가기</button></h2>
+    <hr />
     <원오빌상세item />
     <원오빌상세subway />
   </div>
